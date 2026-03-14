@@ -24,7 +24,7 @@
 <body>
 
 <h1>Datenschutzerklärung</h1>
-<p class="meta">App: <strong>Meine Edelmetalle</strong> &nbsp;|&nbsp; Stand: Februar 2026</p>
+<p class="meta">App: <strong>Meine Edelmetalle</strong> &nbsp;|&nbsp; Stand: März 2026</p>
 
 <h2>1. Verantwortlicher</h2>
 <p>
@@ -69,8 +69,11 @@
 <ul>
     <li><strong>INTERNET</strong> – für den Abruf der Marktpreise von Yahoo Finance</li>
     <li><strong>ACCESS_NETWORK_STATE</strong> – zur Prüfung der Internetverbindung</li>
+    <li><strong>USE_BIOMETRIC</strong> – optional, ausschließlich für die App-Sperre per Fingerabdruck oder Gesichtserkennung (nur wenn der Nutzer diese Funktion aktiviert)</li>
 </ul>
-<p>Es werden keine sensiblen Berechtigungen (Kamera, Mikrofon, Standort, Kontakte etc.) verwendet.</p>
+<p>Die biometrische Authentifizierung ist vollständig optional und kann jederzeit in den Einstellungen deaktiviert werden.
+    Biometrische Merkmale verlassen das Gerät zu keinem Zeitpunkt – die Verarbeitung erfolgt ausschließlich durch das Android-Betriebssystem.
+    Es werden keine Berechtigungen für Kamera, Mikrofon, Standort oder Kontakte verwendet.</p>
 
 <h2>6. Analytics & Tracking</h2>
 <p>
@@ -89,6 +92,13 @@
     Alle Netzwerkkommunikation der App erfolgt ausschließlich über <strong>HTTPS (TLS)</strong>
     verschlüsselte Verbindungen. Lokal gespeicherte Daten sind durch die Android-Systemsicherheit
     (App-Sandbox) geschützt.
+</p>
+<p>
+    Wird die optionale App-Sperre per PIN aktiviert, wird die PIN <strong>niemals im Klartext gespeichert</strong>.
+    Stattdessen wird ein sicherer Hash-Wert (SHA-256 mit individuellem Salt) lokal auf dem Gerät abgelegt.
+    Bei Nutzung der biometrischen Sperre wird ein kryptografischer Schlüssel im
+    <strong>Android Keystore</strong> (hardware-backed, sofern vom Gerät unterstützt) verwaltet.
+    Biometrische Rohdaten werden zu keiner Zeit von der App verarbeitet oder gespeichert.
 </p>
 
 <h2>9. Kinder</h2>
@@ -134,7 +144,7 @@ wenden Sie sich an: <a href="mailto:schurik2386@gmail.com">schurik2386@gmail.com
 </p>
 
 <hr style="margin-top:40px; border:none; border-top:1px solid #ddd;">
-<p style="font-size:0.85em; color:#888;">Meine Edelmetalle App &nbsp;·&nbsp; Version 0.2.4 &nbsp;·&nbsp; Stand Februar 2026</p>
+<p style="font-size:0.85em; color:#888;">Meine Edelmetalle App &nbsp;·&nbsp; Version 0.3.0 &nbsp;·&nbsp; Stand März 2026</p>
 
 </body>
 </html>
