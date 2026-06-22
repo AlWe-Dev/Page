@@ -105,41 +105,54 @@
 
             <h2>2. Welche Daten werden erhoben?</h2>
             <p>
-                Die App <strong>erhebt keinerlei personenbezogene Daten</strong> der Nutzer. Es werden keine Namen,
-                E-Mail-Adressen, Standortdaten oder Gerätekennungen erfasst, gespeichert oder weitergegeben.
+                Die App erhebt folgende Arten von Nutzerdaten, jedoch nur bei optionaler Aktivierung der Cloud-Synchronisation:
+            </p>
+            <ul>
+                <li><strong>E-Mail-Adresse</strong> – wird bei Google Sign-In (optional) erfasst, um die Anmeldung durchzuführen und den Zugriff auf Google Drive zu autorisieren</li>
+                <li><strong>Teamdaten</strong> – Namen von Teams, Beschreibungen, Mitgliedernamen, Eintragsnotizen und Bier-Einträge (nur wenn Drive-Sync aktiviert wird)</li>
+            </ul>
+            <p>
+                <strong>Wichtig:</strong> Die Datenerhebung ist vollständig optional. Ohne Aktivierung der Drive-Sync-Funktion werden keine Nutzerdaten an Google übertragen.
             </p>
 
             <h2>3. Lokal gespeicherte Daten</h2>
             <p>
-                Alle Daten (z. B. eingegebene Teammitglieder, Bier-Einträge und App-Einstellungen) werden
-                <strong>zunächst lokal auf dem Gerät des Nutzers</strong> in einer SQLite-Datenbank (Room)
-                gespeichert. Diese Daten verlassen das Gerät nicht und werden nicht an den Entwickler oder
-                Dritte übertragen.
+                Alle Daten (eingegebene Teammitglieder, Bier-Einträge und App-Einstellungen) werden standardmäßig 
+                <strong>ausschließlich lokal auf dem Gerät des Nutzers</strong> in einer SQLite-Datenbank (Room) 
+                gespeichert. Diese Daten verlassen das Gerät nicht, solange die Cloud-Synchronisation nicht aktiviert wird.
             </p>
 
-            <h2>4. Cloud-Synchronisation (Google Drive)</h2>
+            <h2>4. Cloud-Synchronisation (Google Drive) – Optional</h2>
             <p>
-                Die App bietet dem Team-Administrator die Möglichkeit, die App-Daten über <strong>Google Drive</strong>
-                zu synchronisieren. Dazu nutzt die App <strong>Google Sign-In</strong>, um Sie zu authentifizieren.
-                Wenn diese Funktion aktiviert wird, speichert die App eine verschlüsselte JSON-Datei mit den Team-Daten
-                ausschließlich im versteckten, App-spezifischen Ordner Ihres persönlichen Google Drive Kontos.
-                Diese Daten sind für andere Nutzer nicht sichtbar.
-                Bitte beachten Sie die Datenschutzerklärung von Google:
-                <a href="https://policies.google.com/privacy" target="_blank"
-                    rel="noopener noreferrer">policies.google.com/privacy</a>.
+                Die App bietet dem Team-Administrator (Bierwart) die Möglichkeit, Teamdaten über <strong>Google Drive</strong> 
+                zu synchronisieren und mit Teammitgliedern zu teilen. Dies ist eine <strong>vollständig freiwillige Funktion</strong>.
             </p>
             <p>
-                Die App fordert nur die minimal nötigen Google-Berechtigungen (Scope:
-                <code>https://www.googleapis.com/auth/drive.appdata</code>) an
-                und verwendet diese <strong>ausschließlich</strong> zum Sichern und Wiederherstellen der App-Daten
-                (Teammitglieder, Einträge, Freigabelinks).
+                <strong>Datenfluss:</strong>
+            </p>
+            <ul>
+                <li>Bei Aktivierung fordert die App Sie auf, sich mit Google Sign-In anzumelden</li>
+                <li>Die App speichert die Teamdaten als JSON-Datei in Ihrem persönlichen Google Drive Konto</li>
+                <li>Die App generiert einen öffentlich teilbaren Link mit Lesezugriff („anyone with link = reader")</li>
+                <li>Dieser Link kann mit Teammitgliedern geteilt werden, um ihnen Zugriff im Read-Only-Modus zu gewähren</li>
+            </ul>
+            <p>
+                <strong>Sicherheit:</strong> Alle Datenübertragungen erfolgen ausschließlich über HTTPS/TLS verschlüsselt.
+                Bitte beachten Sie die Datenschutzerklärung von Google:
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>
+            </p>
+            <p>
+                <strong>Google-Berechtigungen:</strong> Die App fordert das Google Scope
+                <code>https://www.googleapis.com/auth/drive.file</code> an
+                und verwendet es <strong>ausschließlich</strong> zum Hochladen, Aktualisieren und Verwalten der Teamdaten-JSON auf Google Drive.
             </p>
 
             <h2>5. Berechtigungen</h2>
             <p>Die App benötigt folgende Android-Berechtigungen:</p>
             <ul>
-                <li><strong>INTERNET</strong> - für die Synchronisation mit Google Drive</li>
-                <li><strong>ACCESS_NETWORK_STATE</strong> - zur Prüfung der Internetverbindung</li>
+                <li><strong>INTERNET</strong> – für die Synchronisation mit Google Drive (nur wenn aktiviert)</li>
+                <li><strong>USE_CREDENTIALS</strong> – um auf Google Sign-In Authentifizierungsdaten zuzugreifen</li>
+                <li><strong>GET_ACCOUNTS</strong> – um die angemeldeten Google-Konten abzurufen</li>
             </ul>
             <p>
                 Es werden keine Berechtigungen für Kamera, Mikrofon, Standort oder Kontakte verwendet.
@@ -153,33 +166,46 @@
 
             <h2>7. Datenweitergabe an Dritte</h2>
             <p>
-                Es findet <strong>keine Weitergabe von Daten an Dritte</strong> statt. Die App verkauft, vermietet
-                oder teilt keinerlei Nutzerdaten.
+                Ohne Aktivierung der Drive-Sync-Funktion: <strong>Keine Weitergabe von Daten an Dritte.</strong>
+            </p>
+            <p>
+                Mit aktivierter Drive-Sync: Teamdaten werden über einen öffentlich teilbaren Google Drive Link geteilt. 
+                Dieser Link ermöglicht Lesezugriff für Personen, die ihn erhalten (z. B. Teammitglieder). 
+                Außerdem werden die E-Mail-Adresse und die Teamdaten Google übertragen, um die Cloud-Funktion bereitzustellen.
             </p>
 
             <h2>8. Datensicherheit</h2>
             <p>
-                Alle Netzwerkkommunikation der App erfolgt ausschließlich über <strong>HTTPS (TLS)</strong>
-                verschlüsselte Verbindungen. Lokal gespeicherte Daten sind durch die Android-Systemsicherheit
-                (App-Sandbox) geschützt.
+                Alle Netzwerkkommunikation der App erfolgt ausschließlich über <strong>HTTPS (TLS)</strong> 
+                verschlüsselte Verbindungen. Lokal gespeicherte Daten sind durch die Android-Systemsicherheit 
+                (App-Sandbox) geschützt. Google-Konten und deren Autorisierungsdaten werden ausschließlich vom 
+                Android-Betriebssystem verwaltet.
             </p>
 
-            <h2>9. Kinder</h2>
+            <h2>9. Datenlöschung</h2>
             <p>
-                Die App richtet sich nicht gezielt an Kinder unter 13 Jahren. Es werden keinerlei
-                Kinderdaten erhoben.
+                <strong>Lokal:</strong> Sie können alle App-Daten jederzeit durch Löschen oder Deinstallation der App löschen.
+            </p>
+            <p>
+                <strong>Google Drive:</strong> Wenn Sie die Drive-Sync-Funktion nutzen, können Sie die hochgeladene JSON-Datei 
+                jederzeit in Ihrem Google Drive Konto löschen. Sie können auch die Autorisierung der App in Ihren Google-Kontoeinstellungen widerrufen.
             </p>
 
-            <h2>10. Ihre Rechte (DSGVO)</h2>
+            <h2>10. Kinder</h2>
             <p>
-                Da die App keine personenbezogenen Daten erhebt oder speichert, entfallen die typischen DSGVO-Rechte
-                (Auskunft, Löschung, Berichtigung) in der Praxis. Sollten Sie dennoch Fragen haben, wenden Sie sich an:
+                Die App richtet sich nicht gezielt an Kinder unter 13 Jahren. Es werden keinerlei Kinderdaten erhoben.
+            </p>
+
+            <h2>11. Ihre Rechte (DSGVO)</h2>
+            <p>
+                Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Widerspruch gegen die Verarbeitung 
+                Ihrer Daten. Sollten Sie von diesen Rechten Gebrauch machen oder Fragen haben, wenden Sie sich bitte an:
                 <a href="mailto:schurik2386@gmail.com">schurik2386@gmail.com</a>
             </p>
 
-            <h2>11. Änderungen dieser Datenschutzerklärung</h2>
+            <h2>12. Änderungen dieser Datenschutzerklärung</h2>
             <p>
-                Diese Datenschutzerklärung kann bei Bedarf aktualisiert werden. Die jeweils aktuelle Version ist unter
+                Diese Datenschutzerklärung kann bei Bedarf aktualisiert werden. Die jeweils aktuelle Version ist unter 
                 dieser URL abrufbar.
             </p>
 
@@ -204,9 +230,8 @@
 
                 <h2>Haftungshinweis</h2>
                 <p>
-                    Die in der App angezeigten Statistiken und Daten dienen ausschließlich der Information.
-                    Für die Richtigkeit, Vollständigkeit und Aktualität der Daten
-                    wird keine Gewähr übernommen.
+                    Die in der App angezeigten Daten und Statistiken dienen ausschließlich der Information innerhalb der Spielgruppe.
+                    Für die Richtigkeit, Vollständigkeit und Aktualität der Daten wird keine Gewähr übernommen.
                 </p>
             </section>
 
@@ -227,41 +252,54 @@
 
             <h2>2. What data is collected?</h2>
             <p>
-                The app <strong>does not collect any personal data</strong>. No names, email addresses,
-                location data, or device identifiers are recorded, stored, or shared.
+                The app collects user data only when cloud synchronization is optionally enabled:
+            </p>
+            <ul>
+                <li><strong>Email address</strong> – collected during Google Sign-In (optional) to authenticate and authorize Google Drive access</li>
+                <li><strong>Team data</strong> – team names, descriptions, member names, entry notes, and beer entries (only if Drive sync is enabled)</li>
+            </ul>
+            <p>
+                <strong>Important:</strong> Data collection is completely optional. Without enabling Drive sync, no user data is transmitted to Google.
             </p>
 
             <h2>3. Locally stored data</h2>
             <p>
-                All data (for example, entered team members, beer entries and app settings) is stored
-                <strong>locally on the user's device</strong> in a SQLite database (Room).
-                This data does not leave the device and is not transmitted to the developer or third parties.
+                All data (team members, beer entries, and app settings) is stored by default 
+                <strong>exclusively locally on the user's device</strong> in a SQLite database (Room).
+                This data does not leave the device unless cloud synchronization is enabled.
             </p>
 
-            <h2>4. Cloud Synchronization (Google Drive)</h2>
+            <h2>4. Cloud Synchronization (Google Drive) – Optional</h2>
             <p>
-                The app offers team administrators the ability to synchronize app data via <strong>Google
-                    Drive</strong>.
-                The app uses <strong>Google Sign-In</strong> to authenticate you for this purpose.
-                If this feature is enabled, the app stores an encrypted JSON file with the team data
-                exclusively in the hidden, app-specific folder of your personal Google Drive account.
-                This data is not visible to other users.
-                Please refer to Google's Privacy Policy:
-                <a href="https://policies.google.com/privacy" target="_blank"
-                    rel="noopener noreferrer">policies.google.com/privacy</a>.
+                The app offers team administrators (Bierwart) the ability to synchronize team data via <strong>Google Drive</strong> 
+                and share it with team members. This is a <strong>completely voluntary feature</strong>.
             </p>
             <p>
-                The app requests only the minimum required Google permissions (Scope:
-                <code>https://www.googleapis.com/auth/drive.appdata</code>)
-                and uses them <strong>exclusively</strong> to backup and restore app data (team members, entries, share
-                links).
+                <strong>Data flow:</strong>
+            </p>
+            <ul>
+                <li>When enabled, the app prompts you to sign in with Google Sign-In</li>
+                <li>The app stores team data as a JSON file in your personal Google Drive account</li>
+                <li>The app generates a publicly shareable link with read-only access ("anyone with link = reader")</li>
+                <li>This link can be shared with team members to grant them read-only access</li>
+            </ul>
+            <p>
+                <strong>Security:</strong> All data transmissions use HTTPS/TLS encryption exclusively.
+                Please refer to Google's Privacy Policy:
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>
+            </p>
+            <p>
+                <strong>Google permissions:</strong> The app requests the Google scope
+                <code>https://www.googleapis.com/auth/drive.file</code>
+                and uses it <strong>exclusively</strong> to upload, update, and manage team data JSON on Google Drive.
             </p>
 
             <h2>5. Permissions</h2>
             <p>The app requires the following Android permissions:</p>
             <ul>
-                <li><strong>INTERNET</strong> - to synchronize data with Google Drive</li>
-                <li><strong>ACCESS_NETWORK_STATE</strong> - to check internet connectivity</li>
+                <li><strong>INTERNET</strong> – to synchronize data with Google Drive (only when enabled)</li>
+                <li><strong>USE_CREDENTIALS</strong> – to access Google Sign-In authentication data</li>
+                <li><strong>GET_ACCOUNTS</strong> – to retrieve signed-in Google accounts</li>
             </ul>
             <p>
                 No permissions for camera, microphone, location, or contacts are used.
@@ -275,30 +313,43 @@
 
             <h2>7. Data sharing with third parties</h2>
             <p>
-                <strong>No data is shared with third parties</strong>. The app does not sell, rent,
-                or share user data.
+                Without Drive sync enabled: <strong>No data is shared with third parties.</strong>
+            </p>
+            <p>
+                With Drive sync enabled: Team data is shared via a publicly shareable Google Drive link.
+                This link grants read access to people who receive it (e.g., team members).
+                Additionally, email address and team data are transmitted to Google to provide the cloud functionality.
             </p>
 
             <h2>8. Data security</h2>
             <p>
-                All app network communication uses encrypted <strong>HTTPS (TLS)</strong> connections.
+                All app network communication uses encrypted <strong>HTTPS (TLS)</strong> connections exclusively.
                 Locally stored data is protected by Android system security (app sandbox).
+                Google accounts and their authorization data are managed exclusively by the Android operating system.
             </p>
 
-            <h2>9. Children</h2>
+            <h2>9. Data deletion</h2>
+            <p>
+                <strong>Locally:</strong> You can delete all app data at any time by deleting or uninstalling the app.
+            </p>
+            <p>
+                <strong>Google Drive:</strong> If you use Drive sync, you can delete the uploaded JSON file at any time 
+                in your Google Drive account. You can also revoke the app's authorization in your Google account settings.
+            </p>
+
+            <h2>10. Children</h2>
             <p>
                 This app is not directed to children under 13. No children's data is collected.
             </p>
 
-            <h2>10. Your rights (GDPR)</h2>
+            <h2>11. Your rights (GDPR)</h2>
             <p>
-                Since the app does not collect or store personal data, common GDPR rights
-                (access, deletion, rectification) generally do not apply in practice. If you still have questions,
-                contact:
+                You have the right to access, rectify, delete, and object to the processing of your data.
+                If you wish to exercise these rights or have questions, please contact:
                 <a href="mailto:schurik2386@gmail.com">schurik2386@gmail.com</a>
             </p>
 
-            <h2>11. Changes to this Privacy Policy</h2>
+            <h2>12. Changes to this Privacy Policy</h2>
             <p>
                 This privacy policy may be updated when needed. The latest version is available at this URL.
             </p>
@@ -324,9 +375,8 @@
 
                 <h2>Disclaimer</h2>
                 <p>
-                    Displayed statistics and data are for informational purposes only.
-                    No guarantee is given for accuracy, completeness,
-                    or timeliness of the data.
+                    The data and statistics displayed in the app are for informational purposes only within the gaming group.
+                    No guarantee is given for accuracy, completeness, or timeliness of the data.
                 </p>
             </section>
 
@@ -405,7 +455,6 @@
             setActiveLanguage(initial);
 
             if (window.location.hash === "#impressum") {
-                // Run after layout so hidden/visible language blocks are already resolved.
                 requestAnimationFrame(function () {
                     scrollToImpressum(initial);
                 });
