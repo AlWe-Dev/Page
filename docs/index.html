@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bierwart - Die intelligente App zur fairen Verwaltung von Bierkisten für Teams, Vereine und WGs.">
+    <meta name="keywords" content="Bierwart, Bierkisten, Team-Management, App, Android">
+    <meta name="author" content="Bierwart Team">
     <meta name="google-site-verification" content="nrbnG1hS4x6HByeZnhul-R22WmX8OxSuzMDmDmUpDZw" />
-    <title>Bierwart - Startseite</title>
+    <meta property="og:title" content="Bierwart - Intelligente Bierkisten-Verwaltung">
+    <meta property="og:description" content="Die App für faire und transparente Bierkisten-Verwaltung in Teams und Vereinen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alwe-dev.github.io/bierwart/">
+    <title>Bierwart - Intelligente Bierkisten-Verwaltung</title>
     <style>
         * {
             margin: 0;
@@ -14,119 +20,626 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            background: #fafafa;
         }
 
         .container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 60px 40px;
-            max-width: 600px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            color: white;
+            padding: 120px 0;
             text-align: center;
+            margin-bottom: 60px;
         }
 
-        h1 {
-            color: #667eea;
+        .hero h1 {
+            font-size: 56px;
             margin-bottom: 20px;
-            font-size: 2.5em;
+            font-weight: 700;
         }
 
-        .subtitle {
-            color: #666;
-            font-size: 1.2em;
-            margin-bottom: 40px;
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .content {
-            text-align: left;
-            margin: 40px 0;
-            line-height: 1.8;
-        }
-
-        .content p {
-            margin-bottom: 15px;
-            color: #555;
-        }
-
-        .links {
+        .cta-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #d4a574;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #d4a574;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about h2 span {
+            color: #d4a574;
+        }
+
+        .about p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .about-features li {
+            padding: 10px 0;
+            color: #555;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .about-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Algorithm Section */
+        .algorithm {
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8e0d5 100%);
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 12px;
+        }
+
+        .algorithm h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .algorithm-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .algo-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .algo-item h3 {
+            color: #d4a574;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .algo-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Team Management */
+        .team-section {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
-        a {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #667eea;
+        .team-card {
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8e0d5 100%);
+            padding: 35px;
+            border-radius: 10px;
+            border-left: 4px solid #d4a574;
+        }
+
+        .team-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .team-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-            font-weight: 500;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 60px;
         }
 
-        a:hover {
-            background: #764ba2;
+        .cta-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
         }
 
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
         footer {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: #d4a574;
+            margin-bottom: 15px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #d4a574;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
             color: #999;
-            font-size: 0.9em;
         }
 
-        footer a {
-            padding: 0;
-            background: none;
-            color: #667eea;
-            display: inline;
-            margin: 0 5px;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
 
-        footer a:hover {
-            background: none;
-            text-decoration: underline;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card, .about, .team-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Store Badge */
+        .store-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .store-badge {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .store-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .store-badge img {
+            height: 60px;
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>🍺 Bierwart</h1>
-        <p class="subtitle">Willkommen auf unserer Seite</p>
-
-        <div class="content">
-            <p>
-                Bierwart ist Ihre zuverlässige Anlaufstelle für alles rund um das Thema Bierkultur und Brauereien.
-                Erfahren Sie mehr über unsere Angebote und Dienstleistungen.
-            </p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">🍺 Bierwart</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#algorithm">Algorithmus</a></li>
+                    <li><a href="#teams">Team-Verwaltung</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <div class="links">
-            <a href="datenschutz-impressum_v2.html">Datenschutz & Impressum</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🍻 Bierwart</h1>
+            <p>Die intelligente App für faire und transparente Bierkisten-Verwaltung in Teams und Vereinen</p>
+            <div class="cta-buttons">
+                <a href="https://play.google.com/store/apps/details?id=de.bierwart.app" class="btn btn-primary">
+                    📱 Im Play Store laden
+                </a>
+                <a href="#features" class="btn btn-secondary">Mehr erfahren</a>
+            </div>
         </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2026 Bierwart. Alle Rechte vorbehalten.</p>
-            <p>
-                <a href="datenschutz-impressum_v2.html">Datenschutzerklärung</a> |
-                <a href="datenschutz-impressum_v2.html">Impressum</a>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Hauptfunktionen</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🤖</span>
+                    <h3>Intelligenter Algorithmus</h3>
+                    <p>Die App berechnet absolut fair, wer die nächste Kiste Bier bringen muss – basierend auf bisheriger Anzahl und Zeit.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Detaillierte Statistiken</h3>
+                    <p>Siegertreppe, Balkendiagramme und Bestenlisten zeigen auf einen Blick, wer der "Bierkönig" ist.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚖️</span>
+                    <h3>Straf- & Freiwilligen-Kisten</h3>
+                    <p>Unterscheide zwischen freiwilligen Spenden und Strafkisten (z.B. wegen Rot-Karte).</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">☁️</span>
+                    <h3>Google Drive Sync</h3>
+                    <p>Alle Daten werden sicher in der Cloud gespeichert – kein Datenverlust, volle Kontrolle als Team-Admin.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔗</span>
+                    <h3>Einfaches Teilen</h3>
+                    <p>Lade Teamkollegen per QR-Code oder Direktlink ein – sie können sofort im Lese-Modus die App nutzen.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📝</span>
+                    <h3>Lokale Historie</h3>
+                    <p>Jede Kiste wird protokolliert – absolut transparent und nachverfolgbar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h2>Wofür ist <span>Bierwart</span> ideal?</h2>
+                    <p>Bierwart ist die perfekte Lösung für alle Vereine, Teams und WGs, die ihre Bierkisten-Verpflichtungen fair und transparent regeln möchten.</p>
+                    <p>Egal ob Fußballteam, Freundeskreis oder Vereinsmitglied – der Bierwart schafft Gerechtigkeit, Transparenz und vor allem Spaß beim Planen, wer die nächste Kiste mitbringt.</p>
+                    <ul class="about-features">
+                        <li>Verabschied dich von Strichlisten auf Bierdeckeln</li>
+                        <li>Keine chaotischen WhatsApp-Gruppen mehr nötig</li>
+                        <li>Hundertprozentig faire Verteilung durch Algorithmus</li>
+                        <li>Alle Daten immer griffbereit in der Cloud</li>
+                        <li>Einfache Verwaltung von mehreren Teams</li>
+                        <li>Intuitive Bedienung ohne Lernkurve</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 120px; margin: 20px 0;">🍺</div>
+                    <p style="color: #d4a574; font-size: 18px; font-weight: bold;">Seit 2026: Die Lösung für faire Bierkisten-Verwaltung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Algorithm Section -->
+    <section class="algorithm" id="algorithm">
+        <div class="container">
+            <h2>Wie funktioniert der Algorithmus?</h2>
+            <div class="algorithm-info">
+                <div class="algo-item">
+                    <h3>📈 Zählweise</h3>
+                    <p>Die App erfasst, wie oft jedes Mitglied bereits eine Kiste besorgt hat.</p>
+                </div>
+                <div class="algo-item">
+                    <h3>⏱️ Zeitfaktor</h3>
+                    <p>Es wird auch berücksichtigt, wie lange die letzte Kiste des Mitglieds her ist.</p>
+                </div>
+                <div class="algo-item">
+                    <h3>⚙️ Gewichtung</h3>
+                    <p>Du kannst selbst bestimmen, welcher Faktor wichtiger ist (0-100%). Standard: 50/50.</p>
+                </div>
+                <div class="algo-item">
+                    <h3>✨ Fazit</h3>
+                    <p>Daraus errechnet die App fair und transparent, wer als Nächstes dran ist. Die Logik ist 100% nachvollziehbar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Management Section -->
+    <section class="team-section" id="teams">
+        <div class="container">
+            <h2 class="section-title">Team-Management</h2>
+            <p style="text-align: center; color: #666; font-size: 16px; margin-bottom: 40px;">
+                Verwalte mehrere Teams oder Vereine in einer App. Admin-Rechte, Viewer-Modus und unbegrenzte Teamgröße.
             </p>
-        </footer>
-    </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>👑 Admin-Rechte</h3>
+                    <p>Als Admin kannst du neue Kisten eintragen, Mitglieder hinzufügen, Rollen verwalten und Cloud-Daten synchronisieren.</p>
+                </div>
+                <div class="team-card">
+                    <h3>👁️ Viewer-Modus</h3>
+                    <p>Mitglieder können alle Informationen sehen, aber nur Admins dürfen neue Kisten eintragen und Einstellungen ändern.</p>
+                </div>
+                <div class="team-card">
+                    <h3>🔐 Rollen-basierte Verwaltung</h3>
+                    <p>Jedes Team kann eigene Admins haben. Die Rechte sind pro Team individuell einstellbar – flexibel wie nie!</p>
+                </div>
+                <div class="team-card">
+                    <h3>📲 QR-Code Einladungen</h3>
+                    <p>Neue Mitglieder werden einfach per QR-Code oder Direktlink eingeladen – ohne E-Mail-Chaos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Bereit für faire Bierkisten-Verwaltung?</h2>
+            <p>Lade dir Bierwart jetzt kostenlos aus dem Google Play Store herunter</p>
+            <div class="cta-buttons">
+                <a href="https://play.google.com/store/apps/details?id=de.bierwart.app" class="btn btn-primary">
+                    📱 Play Store
+                </a>
+                <a href="https://alwe-dev.github.io/Page/datenschutz-impressum_v2.html" class="btn btn-secondary">
+                    📋 Datenschutz & Impressum
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Bierwart</h4>
+                    <p>Die smarte App für faire Bierkisten-Verwaltung in Teams, Vereinen und WGs.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>App</h4>
+                    <a href="https://play.google.com/store/apps/details?id=de.bierwart.app">Google Play</a>
+                    <a href="#features">Features</a>
+                    <a href="#algorithm">Algorithmus</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Informationen</h4>
+                    <a href="https://alwe-dev.github.io/Page/datenschutz-impressum_v2.html">Datenschutzerklärung</a>
+                    <a href="https://alwe-dev.github.io/Page/datenschutz-impressum_v2.html#impressum">Impressum</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Bierwart. Alle Rechte vorbehalten. | Version 1.0.2</p>
+                <p style="font-size: 12px; margin-top: 10px;">Entwickelt mit ❤️ für faire Bierkisten-Verwaltung</p>
+            </div>
+        </div>
+    </footer>
 </body>
-
 </html>
